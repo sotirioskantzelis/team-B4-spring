@@ -3,12 +3,15 @@ package com.example.teamb4spring.bootstrap;
 
 
 import com.example.teamb4spring.base.BaseComponent;
+import com.example.teamb4spring.domain.Episode;
 import com.example.teamb4spring.domain.Movie;
+import com.example.teamb4spring.domain.Season;
 import com.example.teamb4spring.domain.TvShow;
 import com.example.teamb4spring.domain.User;
 import com.example.teamb4spring.service.MovieService;
 import com.example.teamb4spring.service.TvShowService;
 import com.example.teamb4spring.service.UserService;
+import java.util.HashSet;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -43,6 +46,37 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 						.description("Mystery ").releaseYear(2018).build(),
 				TvShow.builder().title("Friends").numberOfSeasons(4)
 						.description("Comedy").releaseYear(2010).build());
+
+		List<Episode> episodeCasa = List.of(
+				Episode.builder().title("THE HEIST").description("The heist takes place").build(),
+				Episode.builder().title("THE TALK").description("The talk takes place").build()
+		);
+
+		List<Episode> episodeDexter = List.of(
+				Episode.builder().title("THE KILLING").description("The killing takes place").build(),
+				Episode.builder().title("THE HIDING").description("The hiding takes place").build()
+		);
+
+		List<Episode> episodeFriends = List.of(
+				Episode.builder().title("Ross gets married again").description("The wedding takes place").build(),
+				Episode.builder().title("Ross gets divorced again").description("The divorce takes place").build()
+		);
+
+
+		List<Season> season = List.of(
+				Season.builder()
+				.seasonNumber(1)
+				.tvShow(tvShows.get(0))
+				.episodes(new HashSet(episodeCasa)).build(),
+				Season.builder()
+						.seasonNumber(1)
+						.tvShow(tvShows.get(1))
+						.episodes(new HashSet(episodeDexter)).build(),
+				Season.builder()
+						.seasonNumber(1)
+						.tvShow(tvShows.get(2))
+						.episodes(new HashSet(episodeFriends)).build()
+		);
 
 		List<User> users = List.of(
 				User.builder().firstname("DaveFirst").lastname("DaveLast").age(43).email("dave@gmail.com").address("thessaloniki").build(),
