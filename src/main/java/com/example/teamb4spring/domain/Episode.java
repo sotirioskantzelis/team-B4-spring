@@ -1,6 +1,7 @@
 package com.example.teamb4spring.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,6 +20,7 @@ public class Episode extends BaseModel{
   String description;
 
   @ManyToOne
+  @JoinColumn(name = "SEASON_ID")
   Season season;
 
 }

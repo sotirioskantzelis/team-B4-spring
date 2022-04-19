@@ -25,22 +25,4 @@ public class Movie extends ViewContent{
 
   int duration;
 
-  @ManyToMany(cascade = { CascadeType.ALL })
-  @JoinTable(
-      name = "movie_production",
-      joinColumns = { @JoinColumn(name = "movie") },
-      inverseJoinColumns = { @JoinColumn(name = "producer")})
-  Set<Producer> producers = new HashSet<>();
-
-  @ManyToMany(cascade = { CascadeType.ALL })
-  @JoinTable(
-      name = "movie_direction",
-      joinColumns = { @JoinColumn(name = "movie") },
-      inverseJoinColumns = { @JoinColumn(name = "director")})
-  Set<Movie> directors = new HashSet<>();
-
-  @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-  Set<Role> cast = new HashSet<>();
-
-
 }
