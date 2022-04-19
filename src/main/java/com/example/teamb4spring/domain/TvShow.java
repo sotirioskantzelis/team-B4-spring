@@ -25,6 +25,7 @@ public class TvShow extends ViewContent {
 
   int numberOfSeasons;
 
-  @OneToMany(mappedBy = "tvShow", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-  Set<Season> seasons = new HashSet<>();
+  @OneToMany
+  @JoinColumn(name = "tv_show_id")
+  Set<Episode> episodes = new HashSet<>();
 }

@@ -19,15 +19,18 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Position extends BaseModel {
 
-  @ManyToOne()
+  @ManyToOne
+  @JoinColumn(name = "movie_id")
   Movie movie;
 
-  @ManyToOne()
+  @ManyToOne
+  @JoinColumn(name = "tv_show_id")
   TvShow tvShow;
 
   private PositionType positionType;
 
   @ManyToOne
+  @JoinColumn(name = "person_id")
   private Person person;
 
   String description;

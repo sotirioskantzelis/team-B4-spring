@@ -8,7 +8,6 @@ import com.example.teamb4spring.domain.Movie;
 import com.example.teamb4spring.domain.Person;
 import com.example.teamb4spring.domain.Position;
 import com.example.teamb4spring.domain.PositionType;
-import com.example.teamb4spring.domain.Season;
 import com.example.teamb4spring.domain.TvShow;
 import com.example.teamb4spring.domain.User;
 import com.example.teamb4spring.service.MovieService;
@@ -19,7 +18,6 @@ import java.util.Date;
 import com.example.teamb4spring.service.UserService;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -48,22 +46,14 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 		Movie.builder().duration(123).title("Django")
 				.description("Adventure").releaseYear(2010).build());
 
-
-
 		List<Episode> episodeList = List.of(
-				Episode.builder().title("THE HEIST").description("The heist takes place").build(),
-				Episode.builder().title("THE TALK").description("The talk takes place").build()
-		);
-
-		List<Season> season = List.of(
-				Season.builder()
-						.seasonNumber(1)
-						.episodes(new HashSet(episodeList)).build()
+				Episode.builder().title("THE HEIST").description("The heist takes place").seasonNumber(1).build(),
+				Episode.builder().title("THE TALK").description("The talk takes place").seasonNumber(1).build()
 		);
 
 		List<TvShow> tvShows = List.of(
 				TvShow.builder().title("La Casa De Papel")
-						.description("Psychological thriller").releaseYear(2018).numberOfSeasons(4).seasons(new HashSet(season)).build(),
+						.description("Psychological thriller").releaseYear(2018).numberOfSeasons(4).episodes(new HashSet(episodeList)).build(),
 				TvShow.builder().title("Dexter").numberOfSeasons(4)
 						.description("Mystery ").releaseYear(2018).build(),
 				TvShow.builder().title("Friends").numberOfSeasons(4)
@@ -103,10 +93,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				User.builder().firstname("MariaFirst").lastname("MariaLast").age(43).email("maria@gmail.com").address("heraklion").build()
 		);
 
-		movieService.createAll(movies);
-		tvShowService.createAll(tvShows);
 		userService.createAll(users);
-		personService.createAll(personList);
 		positionService.createAll(positionList);
 	}
 }

@@ -19,6 +19,6 @@ public class ViewContent extends BaseModel {
 
   private String description;
 
-  int releaseYear;
+  private int releaseYear;
 
 }

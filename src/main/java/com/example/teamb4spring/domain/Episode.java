@@ -15,12 +15,10 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Episode extends BaseModel{
 
-  String title;
+  private String title;
 
-  String description;
+  private String description;
 
-  @ManyToOne
-  @JoinColumn(name = "SEASON_ID")
-  Season season;
+  private int seasonNumber;
 
 }
