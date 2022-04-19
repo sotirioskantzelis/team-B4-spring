@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +22,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "USERS", indexes = {@Index(columnList = "email")})
 @SequenceGenerator(name = "idGenerator", sequenceName = "USERS_SEQ", initialValue = 1, allocationSize = 1)
+@SuperBuilder
 public class User extends BaseModel {
 	@NotNull
 	@Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "{email.pattern}")
