@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/data/movies;;IFEXISTS=FALSE;AUTO_SERVER=TRUE;
+    username: user
+    password: user
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    show-sql : true
+    hibernate:
+      ddl-auto: update
+
