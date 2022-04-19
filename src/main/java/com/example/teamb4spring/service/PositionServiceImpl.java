@@ -20,4 +20,8 @@ public class PositionServiceImpl extends BaseServiceImpl<Position> implements Po
   }
 
 
+  @Override
+  public Position findByTvShow(final Long tvShowId) {
+    return positionRepository.findByTvShow(tvShowId);
+  }
 }
