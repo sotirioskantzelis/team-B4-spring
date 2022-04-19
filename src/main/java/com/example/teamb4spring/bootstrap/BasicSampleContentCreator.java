@@ -10,6 +10,7 @@ import com.example.teamb4spring.domain.Position;
 import com.example.teamb4spring.domain.PositionType;
 import com.example.teamb4spring.domain.TvShow;
 import com.example.teamb4spring.domain.User;
+import com.example.teamb4spring.service.EpisodeService;
 import com.example.teamb4spring.service.MovieService;
 import com.example.teamb4spring.service.PersonService;
 import com.example.teamb4spring.service.PositionService;
@@ -33,6 +34,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 	private final UserService userService;
 	private final PersonService personService;
 	private final PositionService positionService;
+	private final EpisodeService episodeService;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -80,9 +82,9 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				Position.builder().tvShow(tvShows.get(0)).description("Main role").positionType(PositionType.ACTOR).person(personList.get(3)).build(),
 				Position.builder().tvShow(tvShows.get(0)).description("Second role").positionType(PositionType.ACTOR).person(personList.get(4)).build(),
 				Position.builder().tvShow(tvShows.get(0)).description("Komparsos").positionType(PositionType.ACTOR).person(personList.get(6)).build(),
-				Position.builder().tvShow(tvShows.get(0)).description("director 1").positionType(PositionType.DIRECTOR).person(personList.get(6)).build(),
+				Position.builder().movie(movies.get(0)).description("director 1").positionType(PositionType.DIRECTOR).person(personList.get(6)).build(),
 				Position.builder().tvShow(tvShows.get(0)).description("director 2").positionType(PositionType.DIRECTOR).person(personList.get(7)).build(),
-				Position.builder().tvShow(tvShows.get(0)).description("producer 1").positionType(PositionType.PRODUCER).person(personList.get(8)).build(),
+				Position.builder().movie(movies.get(0)).description("producer 1").positionType(PositionType.PRODUCER).person(personList.get(8)).build(),
 				Position.builder().tvShow(tvShows.get(0)).description("producer 2").positionType(PositionType.PRODUCER).person(personList.get(9)).build()
 				);
 
@@ -93,7 +95,11 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				User.builder().firstname("MariaFirst").lastname("MariaLast").age(43).email("maria@gmail.com").address("heraklion").build()
 		);
 
+		movieService.createAll(movies);
+		episodeService.createAll(episodeList);
+		tvShowService.createAll(tvShows);
 		userService.createAll(users);
+		personService.createAll(personList);
 		positionService.createAll(positionList);
 	}
 }
