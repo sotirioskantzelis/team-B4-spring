@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,17 +21,6 @@ public class PositionController {
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<ApiResponse<List<Position>>> getProducts() {
-    return new ResponseEntity<>(ApiResponse.<List<Position>>builder().data(positionService.findAll()).build(), HttpStatus.OK);
-  }
-
-  @GetMapping (params = {"tvShow/{id}"})
-  public ResponseEntity<ApiResponse<List<Position>>>findTvShowById(@PathVariable(name = "id") Long tvShowId) {
-    return ResponseEntity.ok(
-            ApiResponse.<List<Position>>builder().data((List<Position>) positionService.findByTvShow(tvShowId)).build());
-  }
-
-  @GetMapping (params = {"tvShow"})
-  public ResponseEntity<ApiResponse<List<Position>>>findByTvShow() {
     return new ResponseEntity<>(ApiResponse.<List<Position>>builder().data(positionService.findAll()).build(), HttpStatus.OK);
   }
 
