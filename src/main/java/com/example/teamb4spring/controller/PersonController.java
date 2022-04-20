@@ -27,4 +27,10 @@ public class PersonController {
     return ResponseEntity.ok(PersonMapper.mapToPersonDTO(personService.get(id)));
   }
 
+  //todo why @Pathvariable second time doesn't work
+//  @GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+//  @ResponseBody
+//  public ResponseEntity<Object> getMoviesByName(@PathVariable(name="name") String name) {
+//    return ResponseEntity.ok(PersonMapper.mapToPersonDTOs(personService.findPersonByFirstNameOrLastNameContainingIgnoreCase(name, name)));
+//  }
 }
