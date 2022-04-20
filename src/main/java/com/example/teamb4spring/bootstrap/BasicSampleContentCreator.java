@@ -49,6 +49,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				.description("Adventure").releaseYear(2010).build());
 
 		movieService.createAll(movies);
+		logger.info("movies created {}", movies);
 
 		List<Episode> episodeList = List.of(
 				Episode.builder().title("THE HEIST").description("The heist takes place").seasonNumber(1).build(),
@@ -56,6 +57,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 		);
 
 		episodeService.createAll(episodeList);
+		logger.info("episodes created {}", episodeList);
 
 		List<TvShow> tvShows = List.of(
 				TvShow.builder().title("La Casa De Papel")
@@ -67,6 +69,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 		);
 
 		tvShowService.createAll(tvShows);
+		logger.info("tvshows created {}", tvShows);
 
 		List<Person> personList = List.of(
 				Person.builder().firstName("John").lastName("Kitsou").dateOfBirth(new Date()).build(),
@@ -82,6 +85,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 		);
 
 		personService.createAll(personList);
+		logger.info("people created {}", personList);
 
 		List<Position> positionList = List.of(
 				Position.builder().movie(movies.get(0)).description("Role 1").positionType(PositionType.ACTOR).person(personList.get(0)).build(),
@@ -97,6 +101,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				);
 
 		positionService.createAll(positionList);
+		logger.info("positions created {}", positionList);
 
 		List<User> users = List.of(
 				User.builder().firstname("DaveFirst").lastname("DaveLast").age(43).email("dave@gmail.com").address("thessaloniki").build(),
@@ -106,5 +111,6 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 		);
 
 		userService.createAll(users);
+		logger.info("users created {}", users);
 	}
 }

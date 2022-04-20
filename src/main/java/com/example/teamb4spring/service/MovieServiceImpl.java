@@ -1,7 +1,6 @@
 package com.example.teamb4spring.service;
 
 import com.example.teamb4spring.domain.Movie;
-import com.example.teamb4spring.domain.Person;
 import com.example.teamb4spring.repository.MovieRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,8 @@ public class MovieServiceImpl extends BaseServiceImpl<Movie> implements MovieSer
 
 
 	@Override
-	public List<Movie> findByName(String name) {
+	public List<Movie> findByName(String name){
+		logger.info("trying to fetch movies where title like {}", name);
 		return movieRepository.findByTitleContainingIgnoreCase(name);
 	}
 }

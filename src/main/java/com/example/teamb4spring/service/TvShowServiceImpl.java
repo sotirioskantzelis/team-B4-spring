@@ -23,6 +23,7 @@ public class TvShowServiceImpl extends BaseServiceImpl<TvShow> implements TvShow
 
   @Override
   public List<TvShow> findByName(String name) {
+    logger.info("trying to fetch tv shows where title like {}", name);
     return tvShowRepository.findByTitleContainingIgnoreCase(name);
   }
 }
