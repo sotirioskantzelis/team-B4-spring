@@ -13,12 +13,12 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class PersonMapper {
 
-  public List<PersonDTO> mapToPersonDTO(List<Person> people) {
+  public List<PersonDTO> mapToPersonDTOs(List<Person> people) {
     return people.stream().map(PersonMapper::mapToPersonDTO).collect(Collectors.toList());
   }
 
 
-  private PersonDTO mapToPersonDTO(Person person) {
+  public PersonDTO mapToPersonDTO(Person person) {
     PersonDTO personDTO = new PersonDTO();
     personDTO.setFirstName(person.getFirstName());
     personDTO.setLastName(person.getLastName());
