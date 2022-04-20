@@ -1,13 +1,11 @@
 package com.example.teamb4spring.domain;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,4 +26,7 @@ public class TvShow extends ViewContent {
   @OneToMany
   @JoinColumn(name = "tv_show_id")
   Set<Episode> episodes = new HashSet<>();
+
+  @OneToMany(mappedBy = "tvShow",cascade = CascadeType.ALL)
+  Set<Position> positionList = new HashSet<>();
 }

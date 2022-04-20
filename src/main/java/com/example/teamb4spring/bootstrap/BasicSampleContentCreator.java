@@ -13,7 +13,7 @@ import com.example.teamb4spring.domain.User;
 import com.example.teamb4spring.service.EpisodeService;
 import com.example.teamb4spring.service.MovieService;
 import com.example.teamb4spring.service.PersonService;
-import com.example.teamb4spring.service.PositionService;
+import com.example.teamb4spring.service.PositionServiceImpl;
 import com.example.teamb4spring.service.TvShowService;
 import java.util.Date;
 import com.example.teamb4spring.service.UserService;
@@ -33,7 +33,7 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 	private final TvShowService tvShowService;
 	private final UserService userService;
 	private final PersonService personService;
-	private final PositionService positionService;
+	private final PositionServiceImpl positionService;
 	private final EpisodeService episodeService;
 
 	@Override
@@ -48,10 +48,14 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 		Movie.builder().duration(123).title("Django")
 				.description("Adventure").releaseYear(2010).build());
 
+		movieService.createAll(movies);
+
 		List<Episode> episodeList = List.of(
 				Episode.builder().title("THE HEIST").description("The heist takes place").seasonNumber(1).build(),
 				Episode.builder().title("THE TALK").description("The talk takes place").seasonNumber(1).build()
 		);
+
+		episodeService.createAll(episodeList);
 
 		List<TvShow> tvShows = List.of(
 				TvShow.builder().title("La Casa De Papel")
@@ -61,6 +65,8 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				TvShow.builder().title("Friends").numberOfSeasons(4)
 						.description("Comedy").releaseYear(2010).build()
 		);
+
+		tvShowService.createAll(tvShows);
 
 		List<Person> personList = List.of(
 				Person.builder().firstName("John").lastName("Kitsou").dateOfBirth(new Date()).build(),
@@ -75,6 +81,8 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				Person.builder().firstName("Pantelis").lastName("Karas").dateOfBirth(new Date()).build()
 		);
 
+		personService.createAll(personList);
+
 		List<Position> positionList = List.of(
 				Position.builder().movie(movies.get(0)).description("Role 1").positionType(PositionType.ACTOR).person(personList.get(0)).build(),
 				Position.builder().movie(movies.get(0)).description("Role 1").positionType(PositionType.ACTOR).person(personList.get(1)).build(),
@@ -88,6 +96,8 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				Position.builder().tvShow(tvShows.get(0)).description("producer 2").positionType(PositionType.PRODUCER).person(personList.get(9)).build()
 				);
 
+		positionService.createAll(positionList);
+
 		List<User> users = List.of(
 				User.builder().firstname("DaveFirst").lastname("DaveLast").age(43).email("dave@gmail.com").address("thessaloniki").build(),
 				User.builder().firstname("JaneFirst").lastname("JaneLast").age(43).email("jane@gmail.com").address("athens").build(),
@@ -95,11 +105,6 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 				User.builder().firstname("MariaFirst").lastname("MariaLast").age(43).email("maria@gmail.com").address("heraklion").build()
 		);
 
-		movieService.createAll(movies);
-		episodeService.createAll(episodeList);
-		tvShowService.createAll(tvShows);
 		userService.createAll(users);
-		personService.createAll(personList);
-		positionService.createAll(positionList);
 	}
 }

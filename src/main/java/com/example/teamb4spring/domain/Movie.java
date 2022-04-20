@@ -4,10 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,5 +20,10 @@ import lombok.experimental.SuperBuilder;
 public class Movie extends ViewContent{
 
   int duration;
+
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+  Set<Position> positionList = new HashSet<>();
 
 }
