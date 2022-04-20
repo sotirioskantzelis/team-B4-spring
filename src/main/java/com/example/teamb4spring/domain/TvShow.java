@@ -27,6 +27,8 @@ public class TvShow extends ViewContent {
   @JoinColumn(name = "tv_show_id")
   Set<Episode> episodes = new HashSet<>();
 
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   @OneToMany(mappedBy = "tvShow",cascade = CascadeType.ALL)
   Set<Position> positionList = new HashSet<>();
 }
