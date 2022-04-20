@@ -1,7 +1,7 @@
 package com.example.teamb4spring.controller;
 
 import com.example.teamb4spring.mappers.MovieMapper;
-import com.example.teamb4spring.service.MovieService;
+import com.example.teamb4spring.service.TvShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("tvshows")
 @RequiredArgsConstructor
-@RequestMapping("movies")
-public class MovieController {
+public class TvShowController {
 
-  private final MovieService movieService;
+  private final TvShowService tvShowService;
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Object> getMovies() {
-    return ResponseEntity.ok(MovieMapper.mapToMovieDTOs(movieService.findAll()));
+  public ResponseEntity<Object> getTvShows() {
+    return ResponseEntity.ok(MovieMapper.mapToShowDTOs(tvShowService.findAll()));
   }
 
 }
