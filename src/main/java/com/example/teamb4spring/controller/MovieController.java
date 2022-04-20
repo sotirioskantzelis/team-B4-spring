@@ -20,13 +20,18 @@ public class MovieController {
   private final MovieService movieService;
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Object> getMovies() {
+  public ResponseEntity<Object> findAll() {
     return ResponseEntity.ok(ContentMapper.mapToMovieDTOs(movieService.findAll()));
   }
 
   @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Object> findMovieById(@PathVariable(name = "id") Long id) {
+  public ResponseEntity<Object> findById(@PathVariable(name = "id") Long id) {
     return ResponseEntity.ok(ContentMapper.mapToMovieDTO(movieService.get(id)));
+  }
+
+  @GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Object> findByName(@PathVariable(name="name") String name) {
+    return ResponseEntity.ok(ContentMapper.mapToMovieDTOs(movieService.findByName(name)));
   }
 
 }

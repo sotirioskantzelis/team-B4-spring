@@ -20,8 +20,8 @@ public class PersonServiceImpl extends BaseServiceImpl<Person> implements Person
     return personRepository;
   }
 
-  public List<Person> findPersonByFirstNameOrLastNameContainingIgnoreCase(String name1, String name2){
-    return this.personRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name1, name2);
+  public List<Person> findByName(String name){
+    return this.personRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name,name);
   }
 
 

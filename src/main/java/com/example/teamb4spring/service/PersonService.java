@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PersonService extends BaseService<Person, Long> {
 
-  List<Person> findPersonByFirstNameOrLastNameContainingIgnoreCase(String name1, String name2);
+  List<Person> findByName(String name);
 
 
 }

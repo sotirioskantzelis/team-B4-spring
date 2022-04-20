@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,19 +19,17 @@ public class PersonController {
   private final PersonService personService;
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Object> getMovies() {
+  public ResponseEntity<Object> findAll() {
     return ResponseEntity.ok(PersonMapper.mapToPersonDTOs(personService.findAll()));
   }
 
   @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Object> findMovieById(@PathVariable(name = "id") Long id) {
+  public ResponseEntity<Object> findById(@PathVariable(name = "id") Long id) {
     return ResponseEntity.ok(PersonMapper.mapToPersonDTO(personService.get(id)));
   }
 
-  //todo why @Pathvariable second time doesn't work
-//  @GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-//  @ResponseBody
-//  public ResponseEntity<Object> getMoviesByName(@PathVariable(name="name") String name) {
-//    return ResponseEntity.ok(PersonMapper.mapToPersonDTOs(personService.findPersonByFirstNameOrLastNameContainingIgnoreCase(name, name)));
-//  }
+  @GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Object> findByName(@PathVariable(name="name") String name) {
+    return ResponseEntity.ok(PersonMapper.mapToPersonDTOs(personService.findByName(name)));
+ }
 }
