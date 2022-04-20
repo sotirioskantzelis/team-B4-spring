@@ -1,6 +1,6 @@
 package com.example.teamb4spring.dto;
 
-import com.example.teamb4spring.domain.PositionType;
+import com.example.teamb4spring.enums.PositionType;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

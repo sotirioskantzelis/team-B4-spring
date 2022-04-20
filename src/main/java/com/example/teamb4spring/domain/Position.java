@@ -1,5 +1,6 @@
 package com.example.teamb4spring.domain;
 
+import com.example.teamb4spring.enums.PositionType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;

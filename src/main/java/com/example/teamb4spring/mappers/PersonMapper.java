@@ -1,5 +1,6 @@
 package com.example.teamb4spring.mappers;
 
+import com.example.teamb4spring.enums.ContentType;
 import com.example.teamb4spring.domain.Person;
 import com.example.teamb4spring.domain.Position;
 import com.example.teamb4spring.dto.PersonDTO;
@@ -35,8 +36,8 @@ public class PersonMapper {
   private static ContentPositionDTO mapToContentPosition(Position position) {
     ContentPositionDTO contentPosition = new ContentPositionDTO();
     contentPosition.setContentName(
-        Objects.nonNull(position.getMovie()) ? position.getMovie().getTitle()
-            : position.getTvShow().getTitle());
+        Objects.nonNull(position.getMovie()) ? position.getMovie().getTitle() + ContentType.MOVIE.getValue()
+            : position.getTvShow().getTitle() + ContentType.TV_SHOW.getValue());
     contentPosition.setDescription(position.getDescription());
     contentPosition.setPositionType(position.getPositionType());
     return contentPosition;
