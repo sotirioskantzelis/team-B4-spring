@@ -2,6 +2,7 @@ package com.example.teamb4spring.service;
 
 import com.example.teamb4spring.domain.TvShow;
 import com.example.teamb4spring.repository.TvShowRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -20,4 +21,8 @@ public class TvShowServiceImpl extends BaseServiceImpl<TvShow> implements TvShow
   }
 
 
+  @Override
+  public List<TvShow> findByName(String name) {
+    return tvShowRepository.findByTitleContainingIgnoreCase(name);
+  }
 }

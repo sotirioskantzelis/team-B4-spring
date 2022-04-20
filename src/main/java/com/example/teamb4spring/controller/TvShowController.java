@@ -27,4 +27,9 @@ public class TvShowController {
     return ResponseEntity.ok(ContentMapper.mapToShowDTO(tvShowService.get(id)));
   }
 
+  @GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Object> findByName(@PathVariable(name="name") String name) {
+    return ResponseEntity.ok(ContentMapper.mapToShowDTOs(tvShowService.findByName(name)));
+  }
+
 }
