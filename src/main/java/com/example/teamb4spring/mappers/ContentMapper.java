@@ -17,14 +17,14 @@ import lombok.experimental.UtilityClass;
 
 
 @UtilityClass
-public class MovieMapper {
+public class ContentMapper {
 
   public List<MovieDTO> mapToMovieDTOs(List<Movie> movies){
-    return movies.stream().map(MovieMapper::mapToMovieDTO).collect(Collectors.toList());
+    return movies.stream().map(ContentMapper::mapToMovieDTO).collect(Collectors.toList());
   }
 
   public List<TvShowDTO> mapToShowDTOs(List<TvShow> tvShows){
-    return tvShows.stream().map(MovieMapper::mapToShowDTO).collect(Collectors.toList());
+    return tvShows.stream().map(ContentMapper::mapToShowDTO).collect(Collectors.toList());
   }
 
   public void mapToDTO(ViewContent viewContent, ContentDTO contentDTO){

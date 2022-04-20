@@ -1,6 +1,6 @@
 package com.example.teamb4spring.controller;
 
-import com.example.teamb4spring.mappers.MovieMapper;
+import com.example.teamb4spring.mappers.ContentMapper;
 import com.example.teamb4spring.service.TvShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -18,7 +18,7 @@ public class TvShowController {
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Object> getTvShows() {
-    return ResponseEntity.ok(MovieMapper.mapToShowDTOs(tvShowService.findAll()));
+    return ResponseEntity.ok(ContentMapper.mapToShowDTOs(tvShowService.findAll()));
   }
 
 }
