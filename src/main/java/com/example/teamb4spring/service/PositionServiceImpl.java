@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -26,8 +25,6 @@ public class PositionServiceImpl extends BaseServiceImpl<Position> implements Po
     return positionRepository;
   }
 
-  private final PositionService positionService;
-
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<List<Position>> getProducts() {
     return new ResponseEntity<>(HttpStatus.OK);
@@ -38,7 +35,9 @@ public class PositionServiceImpl extends BaseServiceImpl<Position> implements Po
     return new ResponseEntity<>( HttpStatus.OK);
   }
 
-  @GetMapping (params = {"tvShow/{name}"})
+
+
+ /* @GetMapping (params = {"tvShow/{name}"})
   public ResponseEntity<List<Position>>findTvShowById(@PathVariable(name = "name") Long tvShowName) {
     return ResponseEntity.ok(
             ApiResponse.<List<Position>>builder().data((List<Position>) positionService.findByTvShowId(tvShowName)).build());
@@ -53,6 +52,6 @@ public class PositionServiceImpl extends BaseServiceImpl<Position> implements Po
   public ResponseEntity<ApiResponse<List<Position>>>findPersonById(@PathVariable(name = "name") Long personName) {
     return ResponseEntity.ok(
             ApiResponse.<List<Position>>builder().data((List<Position>) positionService.findByPersonId(personId)).build());
-  }
+  }*/
 
 }
